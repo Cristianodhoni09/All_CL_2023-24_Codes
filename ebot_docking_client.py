@@ -43,8 +43,7 @@ class DockingClientNode(Node):
     def send_docking_request(self):
         # Check if the sensor data is available before using it
         self.get_logger().info("Docking Started ...")
-        # if self.ultrasonic_rl_data is not None and self.ultrasonic_rr_data is not None and self.imu_data is not None:
-        
+        # if self.ultrasonic_rl_data is not None and self.ultrasonic_rr_data is not None and self.imu_data is not None:        
         #Calculating Distance for docking
         # ultrasonic_difference = self.ultrasonic_rl_data - self.ultrasonic_rr_data
         # print("ur_rl_data: ", self.ultrasonic_rl_data)
