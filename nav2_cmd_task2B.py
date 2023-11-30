@@ -14,7 +14,7 @@
 # limitations under the License.
 
 from ebot_docking_client import DockingClientNode
-from ebot_undocking_client import UnDockingClientNode
+#from ebot_undocking_client import UnDockingClientNode
 from link_attach_client import AttachLinkClientNode
 from link_detach_client import DetachLinkClientNode
 
@@ -37,7 +37,7 @@ class Nav2CMD(Node):
 
         self.navigator = BasicNavigator()
         self.dock_client = DockingClientNode()
-        self.undock_client = UnDockingClientNode()
+        #self.undock_client = UnDockingClientNode()
         self.link_attach_client = AttachLinkClientNode()
         self.link_detach_client = DetachLinkClientNode()
 
