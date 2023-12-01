@@ -1,0 +1,8 @@
+bool linear_dock2
+bool orientation_dock2
+float64 distance2
+float64 orientation2
+string rack_no2
+---
+bool success2   # indicate successful run of triggered service
+string message2 # informational, e.g. for error messages
