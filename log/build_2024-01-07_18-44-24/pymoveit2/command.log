@@ -1,0 +1,1 @@
+Invoking command in '/home/akash/colcon_ws/src/build/pymoveit2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble ftp_proxy=edcguest:edcguest@172.31.102.29:3128" /usr/bin/cmake /home/akash/colcon_ws/src/pymoveit2 -DCMAKE_INSTALL_PREFIX=/home/akash/colcon_ws/src/install/pymoveit2

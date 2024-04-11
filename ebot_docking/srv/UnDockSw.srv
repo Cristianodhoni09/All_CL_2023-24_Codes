@@ -1,8 +1,8 @@
-bool linear_dock2
-bool orientation_dock2
-float64 distance2
-float64 orientation2
-string rack_no2
+bool linear_dock
+bool orientation_dock
+float64 distance  
+float64 orientation
+string rack_no
 ---
-bool success2   # indicate successful run of triggered service
-string message2 # informational, e.g. for error messages
+bool success   # indicate successful run of triggered service
+string message # informational, e.g. for error messages

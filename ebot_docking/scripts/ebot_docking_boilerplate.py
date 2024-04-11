@@ -17,13 +17,18 @@ from sensor_msgs.msg import Imu, Range
 from rclpy.callback_groups import ReentrantCallbackGroup
 from rclpy.executors import MultiThreadedExecutor
 from tf_transformations import euler_from_quaternion
-from ebot_docking.srv import DockSw, UnDockSw  # Import custom service message
+from ebot_docking.srv import DockSw, UnDockSw # Import custom service message
 import math, statistics
+import yaml
+
+# asj='k'
+# rack_No = 'rack1000'
 
 # Define a class for your ROS2 node
 class MyRobotDockingController(Node):
 
     def __init__(self):
+        
         # Initialize the ROS2 node with a unique name
         super().__init__('my_robot_docking_controller')
 
@@ -44,8 +49,10 @@ class MyRobotDockingController(Node):
         # Create a ROS2 service for controlling docking behavior, can add another custom service message
         self.dock_control_srv = self.create_service(DockSw, 'dock_control', self.dock_control_callback, callback_group=self.callback_group)
 
+        self.undock_control_srv = self.create_service(UnDockSw, 'undock_control', self.undock_control_callback, callback_group=self.callback_group)
+
         # Creating a ROS2 service for controlling un-docking behaviour
-        self.undock_control_srv = self.create_service(DockSw, 'undock_control', self.undock_control_callback, callback_group=self.callback_group)
+        #self.undock_control_srv = self.create_service(DockSw, 'undock_control', self.undock_control_callback, callback_group=self.callback_group)
 
         # Create a publisher for sending velocity commands to the robot
         self.velocity_publisher = self.create_publisher(Twist, 'cmd_vel', 10)
@@ -64,7 +71,15 @@ class MyRobotDockingController(Node):
         self.dock_aligned = False  # Flag to indicate if the robot is aligned for docking 
 
         # Initialize a timer for the main control loop
-        self.controller_timer = self.create_timer(0.1, self.controller_loop)
+        # self.controller_timer = self.create_timer(0.1, self.controller_loop)
+
+        with open("/home/akash/colcon_ws/src/ebot_nav2/scripts/config.yaml", "r") as f:
+            self.pose_data = yaml.safe_load(f)
+
+        self.rack1_yaw = self.pose_data['position'][0]['rack1'][2]
+        self.rack2_yaw = self.pose_data['position'][1]['rack2'][2]
+        self.rack3_yaw = self.pose_data['position'][2]['rack3'][2]
+        # print(rack_coordinates)
 
     #Callback fro IMU
     def imu_callback(self, msg):
@@ -72,7 +87,20 @@ class MyRobotDockingController(Node):
         quaternion_array = msg.orientation
         orientation_list = [quaternion_array.x, quaternion_array.y, quaternion_array.z, quaternion_array.w]
         _, _, yaw = euler_from_quaternion(orientation_list)
-        self.imu_data = yaw
+        # if yaw<0.0:
+        #     yaw=3.14-yaw
+        # elif yaw>0.0:
+        #     yaw=yaw
+        
+        # yaw1=6.28- yaw
+        # self.imu_data = yaw1
+        if yaw<0.0:    
+            yaw1=-yaw
+        else:
+            yaw1=6.28- yaw
+    
+        self.imu_data = yaw1
+        # self.imu_data = yaw
 
     # Callback function for odometry data
     def odometry_callback(self, msg):
@@ -103,158 +131,271 @@ class MyRobotDockingController(Node):
 
     # Main control loop for managing docking behavior
 
-    def undock_controller_loop(self):
-        if self.is_docking:
-            target_x = 0.5
-            target_y = -2.455
-            target_yaw = 3.14
 
-            x_error = target_x - self.robot_pose[0]
-            y_error = target_y - self.robot_pose[1]
-            yaw_error = self.normalize_angle(target_yaw - self.robot_pose[2])
+    def controller_loop(self, rack_No):
+        print(rack_No)
+        
+        if rack_No =='rack1':
+            target_yaw = self.rack1_yaw
+            print(self.rack1_yaw)
 
-            angular_velocity = 0.5 * yaw_error
+        elif rack_No == 'rack2':
+            target_yaw = self.rack2_yaw
+            print(self.rack2_yaw)
 
-            linear_velocity = -0.2
+        elif rack_No == 'rack3':
+            target_yaw = self.rack3_yaw
+            print(self.rack3_yaw)
 
-            if x_error < 0.02 and y_error < 0.02 :
-                linear_velocity = 0.0
-                print("RUK GAYA")
-                self.dock_aligned = True
-                self.is_docking = False
-            
-            msg = Twist()
-            msg.linear.x = linear_velocity
-            msg.angular.z = angular_velocity
-            self.velocity_publisher.publish(msg)
+        if target_yaw<0.0:    
+            target_yaw=-target_yaw
+        else:
+            target_yaw=6.28-target_yaw
 
+        # if target_yaw < 0.0:    
+        #     target_yaw = 3.14-target_yaw
+        # else:
+        #     target_yaw = target_yaw
 
-    def controller_loop(self):
+        # target_yaw = 6.28 - target_yaw
+        
+        # print(asj)
+        # if rack_No == 'rack1000':
+        #     return
+        # The controller loop manages the robot's linear and angular motion 
+        # control to achieve docking alignment and execution
+        print(rack_No)
+        msg = Twist()
         # The controller loop manages the robot's linear and angular motion 
         # control to achieve docking alignment and execution
         if self.is_docking:
+            print('Docking Started')
             # ...
             # Implement control logic here for linear and angular motion
             # For example P-controller is enough, what is P-controller go check it out !
-            target_yaw = 3.5  # Replace with the desired yaw angle for docking
-            yaw_error = self.normalize_angle(target_yaw - self.imu_data)
-            print(yaw_error)
-            angular_velocity = 0.5 * yaw_error  # Adjust the gain as needed
+            # target_yaw = 3.14 # Replace with the desired yaw angle for docking
+            normalized_yaw= self.normalize_angle( self.imu_data)
+            print('imu_data=  ',self.imu_data)
+            #print('normalised_yaw=  ',normalized_yaw)
+
+            yaw_error1 = target_yaw - normalized_yaw
+
+            #print('yaw_error my method = ', yaw_error1)
+            yaw_error= self.normalize_angle(target_yaw-self.imu_data)
+            
+            
+            print('yaw error=  ',yaw_error)
+            angular_velocity = 2 * yaw_error  # Adjust the gain as needed
             # angular_velocity = 0.5 * (target_yaw - self.robot_pose[2])
 
-            # print("imu_data: ", self.imu_data)
-            # print("yaw_error: ", yaw_error)
-
-            # Linear velocity can be calculated based on sensor readings
-            linear_velocity = -0.2  # Modify as needed
+            if abs(yaw_error)>=0.025:
+                print('angular docking')
+                msg.linear.x = 0.0
+                msg.angular.z = -angular_velocity
+                # msg.angular.z = 0.5
+                self.velocity_publisher.publish(msg)
+                return
             
-            # print("ursleft_value: ", self.usrleft_value)
-            # Dynamic linear velocity adjustment based on ultrasonic sensor data
-
-            if self.usrleft_value < 0.1 or self.usrright_value < 0.1:
-                print("robot_pose: ", self.robot_pose[0], self.robot_pose[1], self.robot_pose[2])
-                # If an obstacle is too close, reduce linear velocity
-                linear_velocity = 0.0
-                print("ruk gaya")
-
-                self.dock_aligned = True
-                self.is_docking = False
-
-                if abs(0.5 - self.robot_pose[0]) < 0.3 or abs(-2.455 - self.robot_pose[1]) < 0.3:
-                    print("hi")
-
-                    yaw_error_2 = self.normalize_angle(3.14 - self.robot_pose[2])
-                    print(yaw_error_2)
-
-                    # if(yaw_error_2 < -0.1):
-                    #     self.dock_aligned = True
-                    #     self.is_docking = False
-
-                    angular_velocity = 0.5 * yaw_error_2
-                    self.dock_aligned = False
-                    self.is_docking = True
-
-                    if(yaw_error_2 > -0.02):
-                        self.dock_aligned = True
-                        self.is_docking = False
-
+            elif abs(yaw_error)<0.025 :
+                if self.usrleft_value > 0.15 or self.usrright_value > 0.15:
+                    print('linear docking')
+                    print('usr_left = ',self.usrleft_value,'usr_right = ', self.usrright_value)
+                    msg.linear.x = -0.2
+                    msg.angular.z = 0.0
                 
-                elif self.dock_aligned == False and self.is_docking == True:
-                    self.dock_aligned = False
-                    self.is_docking = True
-                else:
+                
+                if self.usrleft_value < 0.15 or self.usrright_value < 0.15:
+                    msg.linear.x = 0.0 
+                    msg.angular.z = 0.0
+                    self.velocity_publisher.publish(msg)
+                    print('Docking completed')    
                     self.dock_aligned = True
                     self.is_docking = False
 
-                print("robot_pose: ", self.robot_pose[0], self.robot_pose[1], self.robot_pose[2])
+                self.velocity_publisher.publish(msg)
+                return
 
-            # Publish velocity commands to the robot
-            msg = Twist()
-            msg.linear.x = linear_velocity
-            msg.angular.z = angular_velocity
-            self.velocity_publisher.publish(msg)
+
+    def undock_controller_loop(self, rack_No):
+        print(rack_No)
+        
+        if rack_No =='rack1':
+            target_yaw = -1.57
+            print(self.rack1_yaw)
+
+        elif rack_No == 'rack2':
+            target_yaw = 3.14
+            print(self.rack2_yaw)
+
+        elif rack_No == 'rack3':
+            target_yaw = self.rack3_yaw
+            print(self.rack3_yaw)
+
+        if target_yaw<0.0:    
+            target_yaw=-target_yaw
+        else:
+            target_yaw=6.28-target_yaw
+
+        # if target_yaw < 0.0:    
+        #     target_yaw = 3.14-target_yaw
+        # else:
+        #     target_yaw = target_yaw
+
+        # target_yaw = 6.28 - target_yaw
+        
+        # print(asj)
+        # if rack_No == 'rack1000':
+        #     return
+        # The controller loop manages the robot's linear and angular motion 
+        # control to achieve docking alignment and execution
+        print(rack_No)
+        msg = Twist()
+        # The controller loop manages the robot's linear and angular motion 
+        # control to achieve docking alignment and execution
+        if self.is_docking:
+            print('Undocking Started')
             # ...
-            #pass
+            # Implement control logic here for linear and angular motion
+            # For example P-controller is enough, what is P-controller go check it out !
+            # target_yaw = 3.14 # Replace with the desired yaw angle for docking
+            normalized_yaw= self.normalize_angle(self.imu_data)
+            print('imu_data=  ',self.imu_data)
+            #print('normalised_yaw=  ',normalized_yaw)
+
+            yaw_error1 = target_yaw - normalized_yaw
+
+            #print('yaw_error my method = ', yaw_error1)
+            yaw_error= self.normalize_angle(target_yaw-self.imu_data)
+            
+            
+            print('yaw error=  ',yaw_error)
+            angular_velocity = 2 * yaw_error  # Adjust the gain as needed
+            # angular_velocity = 0.5 * (target_yaw - self.robot_pose[2])
+
+            if abs(yaw_error)>=0.025:
+                print('angular undocking')
+                msg.linear.x = 0.0
+                msg.angular.z = -angular_velocity
+                # msg.angular.z = 0.5
+                self.velocity_publisher.publish(msg)
+                return
+            
+            elif abs(yaw_error)<0.025 :
+                # if self.usrleft_value > 0.1 or self.usrright_value > 0.1:
+                #     print('linear docking')
+                #     print('usr_left = ',self.usrleft_value,'usr_right = ', self.usrright_value)
+                #     msg.linear.x = -0.2
+                #     msg.angular.z = 0.0
+                
+                if self.usrleft_value < 0.15 or self.usrright_value < 0.15:
+                    print(self.robot_pose[0], self.robot_pose[1])
+
+                    if rack_No == 'rack1':
+                        print(abs(-3.30 - self.robot_pose[1]))
+                        if abs(-3.30 - self.robot_pose[1]) > 0.05:
+                            msg.linear.x = -0.2 
+                            msg.angular.z = 0.0
+                            self.velocity_publisher.publish(msg)
+
+                        elif abs(-3.30 - self.robot_pose[1]) < 0.05:
+                            msg.linear.x = 0.0 
+                            msg.angular.z = 0.0
+                            self.velocity_publisher.publish(msg)
+                            print('Undocking completed')    
+                            self.dock_aligned = True
+                            self.is_docking = False
+
+
+                    elif rack_No == 'rack2':
+                        print(abs(0.7 - self.robot_pose[0]))
+                        if abs(0.7 - self.robot_pose[0]) > 0.05:
+                            msg.linear.x = -0.2
+                            msg.angular.z = 0.0
+                            self.velocity_publisher.publish(msg)
+                        elif abs(0.7 - self.robot_pose[0]) < 0.05:
+                            msg.linear.x = 0.0 
+                            msg.angular.z = 0.0
+                            self.velocity_publisher.publish(msg)
+                            print('Undocking completed')    
+                            self.dock_aligned = True
+                            self.is_docking = False
+
+                # self.velocity_publisher.publish(msg)
+                return
+        
 
     # Callback function for the DockControl service
     def dock_control_callback(self, request, response):
+        # global rack_No
         # Extract desired docking parameters from the service request
         linear_dock = request.linear_dock
         orientation_dock = request.orientation_dock
         distance = request.distance
         orientation = request.orientation
-        rack_no = request.rack_no
+        rack_No = request.rack_no
+        # asj = 'DOCK CALLBACK'
+        # if rack_No == 'rack1000':
+        #     return
 
         # Reset flags and start the docking process
         self.is_docking = True
         self.dock_aligned = False  # Initially, the robot is not aligned
         self.get_logger().info("Docking started!!!")
 
-        self.controller_loop()
-
-        # Log a message indicating that docking has started
-        self.get_logger().info("Docking started!")
+        # # Log a message indicating that docking has started
+        # self.get_logger().info("Docking started!")
 
         # Create a rate object to control the loop frequency
         rate = self.create_rate(2, self.get_clock())
 
         # Wait until the robot is aligned for docking
-        while not self.dock_aligned:
-            self.get_logger().info("Waiting for alignment...")
+        while self.is_docking == True:
+            self.controller_loop(rack_No)
             rate.sleep()
 
-        # Set the service response indicating success
+        # elif self.dock_aligned:
         response.success = True
-        response.message = "Docking control initiated"
+        response.message = "Docking control completed"
         return response
-    
 
+        # Set the service response indicating success
+        
+    
     # Un-dock control callback function
     def undock_control_callback(self, request, response):
+        # global rack_No
+        # Extract desired docking parameters from the service request
         linear_dock = request.linear_dock
         orientation_dock = request.orientation_dock
         distance = request.distance
         orientation = request.orientation
-        rack_no = request.rack_no
+        rack_No = request.rack_no
+        # asj = 'DOCK CALLBACK'
+        # if rack_No == 'rack1000':
+        #     return
 
+        # Reset flags and start the docking process
         self.is_docking = True
-        self.dock_aligned = False
-        self.get_logger().info("UNDOCKING STARTED!")
+        self.dock_aligned = False  # Initially, the robot is not aligned
+        self.get_logger().info("Undocking started!!!")
 
-        self.undock_controller_loop()
+        # # Log a message indicating that docking has started
+        # self.get_logger().info("Docking started!")
 
-        self.get_logger().info("UnDocking started!")
-
+        # Create a rate object to control the loop frequency
         rate = self.create_rate(2, self.get_clock())
 
-        while not self.dock_aligned:
-            self.get_logger().info("Waiting for alignment...")
+        # Wait until the robot is aligned for docking
+        while self.is_docking == True:
+            self.undock_controller_loop(rack_No)
             rate.sleep()
 
+        # elif self.dock_aligned:
         response.success = True
-        response.message = "UnDocking control initiated"
+        response.message = "Unocking control completed"
         return response
 
+        # Set the service response indicating success
 
 # Main function to initialize the ROS2 node and spin the executor
 def main(args=None):

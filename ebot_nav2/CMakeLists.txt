@@ -67,17 +67,22 @@ install(PROGRAMS
 )
 
 install(PROGRAMS
-  scripts/ebot_undocking_client.py
-  DESTINATION lib/${PROJECT_NAME}
-)
-
-install(PROGRAMS
   scripts/link_attach_client.py
   DESTINATION lib/${PROJECT_NAME}
 )
 
 install(PROGRAMS
   scripts/link_detach_client.py
+  DESTINATION lib/${PROJECT_NAME}
+)
+
+install(PROGRAMS
+  scripts/config.yaml
+  DESTINATION lib/${PROJECT_NAME}
+)
+
+install(PROGRAMS
+  scripts/dock_attach.py
   DESTINATION lib/${PROJECT_NAME}
 )
 

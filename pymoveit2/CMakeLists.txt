@@ -17,6 +17,8 @@ install(PROGRAMS
     ${EXAMPLES_DIR}/ex_servo.py
     ${EXAMPLES_DIR}/link_attach.py
     ${EXAMPLES_DIR}/link_detach.py
+    ${EXAMPLES_DIR}/gripper_magnet.py
+    ${EXAMPLES_DIR}/switch_controller.py
     DESTINATION lib/${PROJECT_NAME}
 )
 

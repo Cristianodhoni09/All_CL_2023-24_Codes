@@ -13,10 +13,10 @@ class DetachLinkClientNode(Node):
 
     def detach_link(self, model1_name, link1_name, model2_name, link2_name):
         req = DetachLink.Request()
-        req.model1_name = 'ebot'
-        req.link1_name = 'ebot_base_link'
-        req.model2_name = 'rack1'
-        req.link2_name = 'link'
+        req.model1_name = model1_name
+        req.link1_name = link1_name
+        req.model2_name = model2_name
+        req.link2_name = link2_name
 
         future = self.link_detach_cli.call_async(req)
         rclpy.spin_until_future_complete(self, future)

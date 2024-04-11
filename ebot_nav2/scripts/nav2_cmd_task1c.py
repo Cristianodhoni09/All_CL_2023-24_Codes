@@ -14,10 +14,12 @@
 # limitations under the License.
 
 from ebot_docking_client import DockingClientNode
-from ebot_undocking_client import UnDockingClientNode
+#from ebot_undocking_client import UnDockingClientNode
 from link_attach_client import AttachLinkClientNode
 from link_detach_client import DetachLinkClientNode
+import time
 
+from std_msgs.msg import Bool
 from rclpy.callback_groups import ReentrantCallbackGroup
 from rclpy.node import Node
 from geometry_msgs.msg import PoseStamped
@@ -27,6 +29,7 @@ from linkattacher_msgs.srv import DetachLink
 import rclpy
 from rclpy.duration import Duration
 import math
+from geometry_msgs.msg import Twist
 
 
 class Nav2CMD(Node):
@@ -37,21 +40,31 @@ class Nav2CMD(Node):
 
         self.navigator = BasicNavigator()
         self.dock_client = DockingClientNode()
-        self.undock_client = UnDockingClientNode()
+        #self.undock_client = UnDockingClientNode()
         self.link_attach_client = AttachLinkClientNode()
         self.link_detach_client = DetachLinkClientNode()
-
+        self.velocity_publisher = self.create_publisher(Twist, 'cmd_vel', 10)
+        self.attach_status_publisher = self.create_publisher(Bool, '/attach_status', 10)
+        
+        self.attach_status_msg = Bool()
+        self.Flag = False
         self.timer = self.create_timer(0.1, self.run)
 
-
+    def arm_flag(self):
+        # print("Flag value:", self.Flag)
+        
+        self.attach_status_msg.data = self.Flag
+        self.attach_status_publisher.publish(self.attach_status_msg)
+    
     def dock_and_attach_rack(self, goal_pose, rack_name):
         # Go to the pre-dock pose
         self.navigator.goToPose(goal_pose)
         while not self.navigator.isTaskComplete():
+            self.arm_flag()
             pass
 
         # Dock using your client node
-        self.dock_client.send_docking_request()
+        self.dock_client.send_docking_request(rack_name)
         # Your docking client code here
 
         # Attach the rack
@@ -62,6 +75,7 @@ class Nav2CMD(Node):
         attach_request.link2_name = 'link'
         self.link_attach_client.attach_link(attach_request.model1_name, attach_request.link1_name, attach_request.model2_name, attach_request.link2_name)
 
+        self.Flag = True
         # while not self.link_attach_client.service_is_ready():
         #     pass
 
@@ -69,6 +83,7 @@ class Nav2CMD(Node):
         # Go to the pre-place pose
         self.navigator.goToPose(goal_pose)
         while not self.navigator.isTaskComplete():
+            self.arm_flag()
             pass
 
         # self.undock_client.send_undocking_request()
@@ -87,7 +102,14 @@ class Nav2CMD(Node):
 
         # Detach the rack
 
-        self.dock_client.send_docking_request()
+        self.dock_client.send_undocking_request(rack_name)
+        # msg = Twist()
+        # msg.linear.x = -0.25
+        # msg.angular.z = 0.0
+        # start_time=time.time()
+        # duration=1.5
+        # while time.time() - start_time < duration:
+        #     self.velocity_publisher.publish(msg)
 
         detach_request = DetachLink.Request()
         detach_request.model1_name = 'ebot'
@@ -96,6 +118,7 @@ class Nav2CMD(Node):
         detach_request.link2_name = 'link'
         self.link_detach_client.detach_link(detach_request.model1_name, detach_request.link1_name, detach_request.model2_name, detach_request.link2_name)
 
+        self.Flag = False
         # while not self.link_detach_client.service_is_ready():
         #     pass
 
@@ -116,57 +139,101 @@ class Nav2CMD(Node):
         # Define your goal poses
         goal_poses = []
 
-        goal_pose1 = PoseStamped()
-        goal_pose1.header.frame_id = 'map'
-        goal_pose1.header.stamp = self.navigator.get_clock().now().to_msg()
-        goal_pose1.pose.position.x = 0.5
-        goal_pose1.pose.position.y = 4.65
-        goal_pose1.pose.orientation.w = 0.0
-        goal_pose1.pose.orientation.z = 1.0
-        goal_poses.append(goal_pose1)
+        goal_pose_1 = PoseStamped()
+        goal_pose_1.header.frame_id = 'map'
+        goal_pose_1.header.stamp = self.navigator.get_clock().now().to_msg()
+        goal_pose_1.pose.position.x = 0.5
+        goal_pose_1.pose.position.y = 4.62
+        goal_pose_1.pose.orientation.w = 0.0
+        goal_pose_1.pose.orientation.z = 1.0
+        goal_poses.append(goal_pose_1)
+
+        goal_pose_1_place = PoseStamped()
+        goal_pose_1_place.header.frame_id = 'map'
+        goal_pose_1_place.header.stamp = self.navigator.get_clock().now().to_msg()
+        goal_pose_1_place.pose.position.x = 1.9
+        goal_pose_1_place.pose.position.y = -5.0
+        goal_pose_1_place.pose.orientation.w = 0.707
+        goal_pose_1_place.pose.orientation.z = -0.707
+        goal_poses.append(goal_pose_1_place)
 
         # additional goals can be appended
-        goal_pose2 = PoseStamped()
-        goal_pose2.header.frame_id = 'map'
-        goal_pose2.header.stamp = self.navigator.get_clock().now().to_msg()
-        goal_pose2.pose.position.x = 0.8
-        goal_pose2.pose.position.y = -2.455
-        goal_pose2.pose.orientation.w = 1.0
-        goal_pose2.pose.orientation.z = 0.0
-        goal_poses.append(goal_pose2)
 
         # goal_pose_int = PoseStamped()
         # goal_pose_int.header.frame_id = 'map'
         # goal_pose_int.header.stamp = self.navigator.get_clock().now().to_msg()
-        # goal_pose_int.pose.position.x = 0.9
-        # goal_pose_int.pose.position.y = -0.5
-        # goal_pose_int.pose.orientation.w = 0.0
-        # goal_pose_int.pose.orientation.z = 1.0
+        # goal_pose_int.pose.position.x = 0.0
+        # goal_pose_int.pose.position.y = 0.0
+        # goal_pose_int.pose.orientation.w = 1.0
+        # goal_pose_int.pose.orientation.z = 0.0
+
+        goal_pose_2 = PoseStamped()
+        goal_pose_2.header.frame_id = 'map'
+        goal_pose_2.header.stamp = self.navigator.get_clock().now().to_msg()
+        goal_pose_2.pose.position.x = 2.32
+        goal_pose_2.pose.position.y = 2.0
+        goal_pose_2.pose.orientation.w = 0.707
+        goal_pose_2.pose.orientation.z = -0.707
+
+        goal_pose_2_place = PoseStamped()
+        goal_pose_2_place.header.frame_id = 'map'
+        goal_pose_2_place.header.stamp = self.navigator.get_clock().now().to_msg()
+        goal_pose_2_place.pose.position.x = 0.5
+        goal_pose_2_place.pose.position.y = -2.6
+        goal_pose_2_place.pose.orientation.w = 0.707
+        goal_pose_2_place.pose.orientation.z = -0.707
+        goal_poses.append(goal_pose_2_place)
         
-        goal_pose3 = PoseStamped()
-        goal_pose3.header.frame_id = 'map'
-        goal_pose3.header.stamp = self.navigator.get_clock().now().to_msg()
-        goal_pose3.pose.position.x = 0.0
-        goal_pose3.pose.position.y = 0.0
-        goal_pose3.pose.orientation.w = 0.0
-        goal_pose3.pose.orientation.z = 1.0
-        goal_poses.append(goal_pose3)
+        # goal_pose3 = PoseStamped()
+        # goal_pose3.header.frame_id = 'map'
+        # goal_pose3.header.stamp = self.navigator.get_clock().now().to_msg()
+        # goal_pose3.pose.position.x = 1.85
+        # goal_pose3.pose.position.y = 2.5
+        # goal_pose3.pose.orientation.w = 0.707
+        # goal_pose3.pose.orientation.z = -0.707
+        # goal_poses.append(goal_pose3)
 
-        # ...
+        
+
+        #For Rack-1
         rack_name = 'rack1'
-        # for pose in goal_poses:
-            # Dock and attach rack
-        self.dock_and_attach_rack(goal_pose1, rack_name)
-            # Pre-place and detach rack
-        self.pre_place_and_detach_rack(goal_pose2, rack_name)
+        # for i in range(20):
+        #     self.arm_flag()
+        
+        # Dock and attach rack
+        self.dock_and_attach_rack(goal_pose_1, rack_name)
+        self.Flag = True
+        # for i in range(20):
+        #     self.arm_flag()
 
-        # self.navigator.goToPose(goal_pose_int)
-        # while not self.navigator.isTaskComplete():
-        #     pass
+        # Pre-place and detach rack
+        self.pre_place_and_detach_rack(goal_pose_1_place, rack_name)
+        self.Flag = False
+        # for i in range(20):
+        #     self.arm_flag()
 
-        self.navigator.goToPose(goal_pose3)
-        while not self.navigator.isTaskComplete():
-            pass
+        # msg2 = Twist()
+        # msg2.linear.x = 0.50
+        # msg2.angular.z = 0.0
+        # start_time2=time.time()
+        # duration2 = 1.0
+        # while time.time() - start_time2 < duration2:
+        #     print(time.time() - start_time2)
+        #     self.velocity_publisher.publish(msg2)
+                                
+
+        rack_name = 'rack2'
+
+        #For Rack-2
+        self.dock_and_attach_rack(goal_pose_2, rack_name)
+        self.Flag = True
+        # for i in range(20):
+        #     self.arm_flag()
+
+        self.pre_place_and_detach_rack(goal_pose_2_place, rack_name)
+        self.Flag = False
+        for i in range(20):
+            self.arm_flag()
 
         result = self.navigator.getResult()
         # ...

@@ -1,0 +1,331 @@
+[0.650s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build']
+[0.650s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=False, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=12, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, verb_parser=<colcon_defaults.argument_parser.defaults.DefaultArgumentsDecorator object at 0x7fee4b68ad10>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7fee4b6257b0>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7fee4b6257b0>>)
+[0.684s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.684s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.684s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.684s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.684s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.684s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.684s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/akash/colcon_ws/src'
+[0.684s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.684s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.684s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.684s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.684s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.684s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.684s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.684s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.684s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.692s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[0.692s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[0.692s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[0.692s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[0.692s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[0.692s] Level 1:colcon.colcon_core.package_identification:_identify(aws-robomaker-small-warehouse-world) by extensions ['ignore', 'ignore_ament_install']
+[0.692s] Level 1:colcon.colcon_core.package_identification:_identify(aws-robomaker-small-warehouse-world) by extension 'ignore'
+[0.692s] Level 1:colcon.colcon_core.package_identification:_identify(aws-robomaker-small-warehouse-world) by extension 'ignore_ament_install'
+[0.692s] Level 1:colcon.colcon_core.package_identification:_identify(aws-robomaker-small-warehouse-world) by extensions ['colcon_pkg']
+[0.692s] Level 1:colcon.colcon_core.package_identification:_identify(aws-robomaker-small-warehouse-world) by extension 'colcon_pkg'
+[0.692s] Level 1:colcon.colcon_core.package_identification:_identify(aws-robomaker-small-warehouse-world) by extensions ['colcon_meta']
+[0.692s] Level 1:colcon.colcon_core.package_identification:_identify(aws-robomaker-small-warehouse-world) by extension 'colcon_meta'
+[0.692s] Level 1:colcon.colcon_core.package_identification:_identify(aws-robomaker-small-warehouse-world) by extensions ['ros']
+[0.692s] Level 1:colcon.colcon_core.package_identification:_identify(aws-robomaker-small-warehouse-world) by extension 'ros'
+[0.694s] DEBUG:colcon.colcon_core.package_identification:Package 'aws-robomaker-small-warehouse-world' with type 'ros.ament_cmake' and name 'aws_robomaker_small_warehouse_world'
+[0.694s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[0.695s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[0.695s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[0.695s] Level 1:colcon.colcon_core.package_identification:_identify(ebot_description) by extensions ['ignore', 'ignore_ament_install']
+[0.695s] Level 1:colcon.colcon_core.package_identification:_identify(ebot_description) by extension 'ignore'
+[0.695s] Level 1:colcon.colcon_core.package_identification:_identify(ebot_description) by extension 'ignore_ament_install'
+[0.695s] Level 1:colcon.colcon_core.package_identification:_identify(ebot_description) by extensions ['colcon_pkg']
+[0.695s] Level 1:colcon.colcon_core.package_identification:_identify(ebot_description) by extension 'colcon_pkg'
+[0.695s] Level 1:colcon.colcon_core.package_identification:_identify(ebot_description) by extensions ['colcon_meta']
+[0.695s] Level 1:colcon.colcon_core.package_identification:_identify(ebot_description) by extension 'colcon_meta'
+[0.695s] Level 1:colcon.colcon_core.package_identification:_identify(ebot_description) by extensions ['ros']
+[0.695s] Level 1:colcon.colcon_core.package_identification:_identify(ebot_description) by extension 'ros'
+[0.695s] DEBUG:colcon.colcon_core.package_identification:Package 'ebot_description' with type 'ros.ament_cmake' and name 'ebot_description'
+[0.695s] Level 1:colcon.colcon_core.package_identification:_identify(ebot_docking) by extensions ['ignore', 'ignore_ament_install']
+[0.695s] Level 1:colcon.colcon_core.package_identification:_identify(ebot_docking) by extension 'ignore'
+[0.695s] Level 1:colcon.colcon_core.package_identification:_identify(ebot_docking) by extension 'ignore_ament_install'
+[0.695s] Level 1:colcon.colcon_core.package_identification:_identify(ebot_docking) by extensions ['colcon_pkg']
+[0.695s] Level 1:colcon.colcon_core.package_identification:_identify(ebot_docking) by extension 'colcon_pkg'
+[0.696s] Level 1:colcon.colcon_core.package_identification:_identify(ebot_docking) by extensions ['colcon_meta']
+[0.696s] Level 1:colcon.colcon_core.package_identification:_identify(ebot_docking) by extension 'colcon_meta'
+[0.696s] Level 1:colcon.colcon_core.package_identification:_identify(ebot_docking) by extensions ['ros']
+[0.696s] Level 1:colcon.colcon_core.package_identification:_identify(ebot_docking) by extension 'ros'
+[0.696s] DEBUG:colcon.colcon_core.package_identification:Package 'ebot_docking' with type 'ros.ament_cmake' and name 'ebot_docking'
+[0.696s] Level 1:colcon.colcon_core.package_identification:_identify(ebot_nav2) by extensions ['ignore', 'ignore_ament_install']
+[0.696s] Level 1:colcon.colcon_core.package_identification:_identify(ebot_nav2) by extension 'ignore'
+[0.696s] Level 1:colcon.colcon_core.package_identification:_identify(ebot_nav2) by extension 'ignore_ament_install'
+[0.696s] Level 1:colcon.colcon_core.package_identification:_identify(ebot_nav2) by extensions ['colcon_pkg']
+[0.696s] Level 1:colcon.colcon_core.package_identification:_identify(ebot_nav2) by extension 'colcon_pkg'
+[0.696s] Level 1:colcon.colcon_core.package_identification:_identify(ebot_nav2) by extensions ['colcon_meta']
+[0.696s] Level 1:colcon.colcon_core.package_identification:_identify(ebot_nav2) by extension 'colcon_meta'
+[0.696s] Level 1:colcon.colcon_core.package_identification:_identify(ebot_nav2) by extensions ['ros']
+[0.696s] Level 1:colcon.colcon_core.package_identification:_identify(ebot_nav2) by extension 'ros'
+[0.696s] DEBUG:colcon.colcon_core.package_identification:Package 'ebot_nav2' with type 'ros.ament_cmake' and name 'ebot_nav2'
+[0.696s] Level 1:colcon.colcon_core.package_identification:_identify(eyantra_warehouse) by extensions ['ignore', 'ignore_ament_install']
+[0.697s] Level 1:colcon.colcon_core.package_identification:_identify(eyantra_warehouse) by extension 'ignore'
+[0.697s] Level 1:colcon.colcon_core.package_identification:_identify(eyantra_warehouse) by extension 'ignore_ament_install'
+[0.697s] Level 1:colcon.colcon_core.package_identification:_identify(eyantra_warehouse) by extensions ['colcon_pkg']
+[0.697s] Level 1:colcon.colcon_core.package_identification:_identify(eyantra_warehouse) by extension 'colcon_pkg'
+[0.697s] Level 1:colcon.colcon_core.package_identification:_identify(eyantra_warehouse) by extensions ['colcon_meta']
+[0.697s] Level 1:colcon.colcon_core.package_identification:_identify(eyantra_warehouse) by extension 'colcon_meta'
+[0.697s] Level 1:colcon.colcon_core.package_identification:_identify(eyantra_warehouse) by extensions ['ros']
+[0.697s] Level 1:colcon.colcon_core.package_identification:_identify(eyantra_warehouse) by extension 'ros'
+[0.697s] DEBUG:colcon.colcon_core.package_identification:Package 'eyantra_warehouse' with type 'ros.ament_cmake' and name 'eyantra_warehouse'
+[0.697s] Level 1:colcon.colcon_core.package_identification:_identify(gazebo_ros2_control) by extensions ['ignore', 'ignore_ament_install']
+[0.697s] Level 1:colcon.colcon_core.package_identification:_identify(gazebo_ros2_control) by extension 'ignore'
+[0.697s] Level 1:colcon.colcon_core.package_identification:_identify(gazebo_ros2_control) by extension 'ignore_ament_install'
+[0.697s] Level 1:colcon.colcon_core.package_identification:_identify(gazebo_ros2_control) by extensions ['colcon_pkg']
+[0.697s] Level 1:colcon.colcon_core.package_identification:_identify(gazebo_ros2_control) by extension 'colcon_pkg'
+[0.697s] Level 1:colcon.colcon_core.package_identification:_identify(gazebo_ros2_control) by extensions ['colcon_meta']
+[0.697s] Level 1:colcon.colcon_core.package_identification:_identify(gazebo_ros2_control) by extension 'colcon_meta'
+[0.697s] Level 1:colcon.colcon_core.package_identification:_identify(gazebo_ros2_control) by extensions ['ros']
+[0.697s] Level 1:colcon.colcon_core.package_identification:_identify(gazebo_ros2_control) by extension 'ros'
+[0.698s] DEBUG:colcon.colcon_core.package_identification:Package 'gazebo_ros2_control' with type 'ros.ament_cmake' and name 'gazebo_ros2_control'
+[0.698s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[0.698s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[0.698s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[0.698s] Level 1:colcon.colcon_core.package_identification:_identify(linkattacher_msgs) by extensions ['ignore', 'ignore_ament_install']
+[0.698s] Level 1:colcon.colcon_core.package_identification:_identify(linkattacher_msgs) by extension 'ignore'
+[0.698s] Level 1:colcon.colcon_core.package_identification:_identify(linkattacher_msgs) by extension 'ignore_ament_install'
+[0.698s] Level 1:colcon.colcon_core.package_identification:_identify(linkattacher_msgs) by extensions ['colcon_pkg']
+[0.698s] Level 1:colcon.colcon_core.package_identification:_identify(linkattacher_msgs) by extension 'colcon_pkg'
+[0.698s] Level 1:colcon.colcon_core.package_identification:_identify(linkattacher_msgs) by extensions ['colcon_meta']
+[0.698s] Level 1:colcon.colcon_core.package_identification:_identify(linkattacher_msgs) by extension 'colcon_meta'
+[0.698s] Level 1:colcon.colcon_core.package_identification:_identify(linkattacher_msgs) by extensions ['ros']
+[0.698s] Level 1:colcon.colcon_core.package_identification:_identify(linkattacher_msgs) by extension 'ros'
+[0.699s] DEBUG:colcon.colcon_core.package_identification:Package 'linkattacher_msgs' with type 'ros.ament_cmake' and name 'linkattacher_msgs'
+[0.699s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[0.699s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[0.699s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[0.699s] Level 1:colcon.colcon_core.package_identification:_identify(pymoveit2) by extensions ['ignore', 'ignore_ament_install']
+[0.699s] Level 1:colcon.colcon_core.package_identification:_identify(pymoveit2) by extension 'ignore'
+[0.699s] Level 1:colcon.colcon_core.package_identification:_identify(pymoveit2) by extension 'ignore_ament_install'
+[0.699s] Level 1:colcon.colcon_core.package_identification:_identify(pymoveit2) by extensions ['colcon_pkg']
+[0.699s] Level 1:colcon.colcon_core.package_identification:_identify(pymoveit2) by extension 'colcon_pkg'
+[0.699s] Level 1:colcon.colcon_core.package_identification:_identify(pymoveit2) by extensions ['colcon_meta']
+[0.699s] Level 1:colcon.colcon_core.package_identification:_identify(pymoveit2) by extension 'colcon_meta'
+[0.699s] Level 1:colcon.colcon_core.package_identification:_identify(pymoveit2) by extensions ['ros']
+[0.699s] Level 1:colcon.colcon_core.package_identification:_identify(pymoveit2) by extension 'ros'
+[0.699s] DEBUG:colcon.colcon_core.package_identification:Package 'pymoveit2' with type 'ros.ament_cmake' and name 'pymoveit2'
+[0.699s] Level 1:colcon.colcon_core.package_identification:_identify(realsense_gazebo_plugin) by extensions ['ignore', 'ignore_ament_install']
+[0.700s] Level 1:colcon.colcon_core.package_identification:_identify(realsense_gazebo_plugin) by extension 'ignore'
+[0.700s] Level 1:colcon.colcon_core.package_identification:_identify(realsense_gazebo_plugin) by extension 'ignore_ament_install'
+[0.700s] Level 1:colcon.colcon_core.package_identification:_identify(realsense_gazebo_plugin) by extensions ['colcon_pkg']
+[0.700s] Level 1:colcon.colcon_core.package_identification:_identify(realsense_gazebo_plugin) by extension 'colcon_pkg'
+[0.700s] Level 1:colcon.colcon_core.package_identification:_identify(realsense_gazebo_plugin) by extensions ['colcon_meta']
+[0.700s] Level 1:colcon.colcon_core.package_identification:_identify(realsense_gazebo_plugin) by extension 'colcon_meta'
+[0.700s] Level 1:colcon.colcon_core.package_identification:_identify(realsense_gazebo_plugin) by extensions ['ros']
+[0.700s] Level 1:colcon.colcon_core.package_identification:_identify(realsense_gazebo_plugin) by extension 'ros'
+[0.700s] DEBUG:colcon.colcon_core.package_identification:Package 'realsense_gazebo_plugin' with type 'ros.ament_cmake' and name 'realsense_gazebo_plugin'
+[0.700s] Level 1:colcon.colcon_core.package_identification:_identify(ur5_moveit) by extensions ['ignore', 'ignore_ament_install']
+[0.700s] Level 1:colcon.colcon_core.package_identification:_identify(ur5_moveit) by extension 'ignore'
+[0.700s] Level 1:colcon.colcon_core.package_identification:_identify(ur5_moveit) by extension 'ignore_ament_install'
+[0.701s] Level 1:colcon.colcon_core.package_identification:_identify(ur5_moveit) by extensions ['colcon_pkg']
+[0.701s] Level 1:colcon.colcon_core.package_identification:_identify(ur5_moveit) by extension 'colcon_pkg'
+[0.701s] Level 1:colcon.colcon_core.package_identification:_identify(ur5_moveit) by extensions ['colcon_meta']
+[0.701s] Level 1:colcon.colcon_core.package_identification:_identify(ur5_moveit) by extension 'colcon_meta'
+[0.701s] Level 1:colcon.colcon_core.package_identification:_identify(ur5_moveit) by extensions ['ros']
+[0.701s] Level 1:colcon.colcon_core.package_identification:_identify(ur5_moveit) by extension 'ros'
+[0.701s] DEBUG:colcon.colcon_core.package_identification:Package 'ur5_moveit' with type 'ros.ament_cmake' and name 'ur5_moveit'
+[0.701s] Level 1:colcon.colcon_core.package_identification:_identify(ur_description) by extensions ['ignore', 'ignore_ament_install']
+[0.701s] Level 1:colcon.colcon_core.package_identification:_identify(ur_description) by extension 'ignore'
+[0.701s] Level 1:colcon.colcon_core.package_identification:_identify(ur_description) by extension 'ignore_ament_install'
+[0.702s] Level 1:colcon.colcon_core.package_identification:_identify(ur_description) by extensions ['colcon_pkg']
+[0.702s] Level 1:colcon.colcon_core.package_identification:_identify(ur_description) by extension 'colcon_pkg'
+[0.702s] Level 1:colcon.colcon_core.package_identification:_identify(ur_description) by extensions ['colcon_meta']
+[0.702s] Level 1:colcon.colcon_core.package_identification:_identify(ur_description) by extension 'colcon_meta'
+[0.702s] Level 1:colcon.colcon_core.package_identification:_identify(ur_description) by extensions ['ros']
+[0.702s] Level 1:colcon.colcon_core.package_identification:_identify(ur_description) by extension 'ros'
+[0.702s] DEBUG:colcon.colcon_core.package_identification:Package 'ur_description' with type 'ros.ament_cmake' and name 'ur_description'
+[0.702s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.702s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.702s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.702s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.702s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.765s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[0.765s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[0.784s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 11 installed packages in /home/akash/colcon_ws/install
+[0.794s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 399 installed packages in /opt/ros/humble
+[0.803s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[0.875s] Level 5:colcon.colcon_core.verb:set package 'aws_robomaker_small_warehouse_world' build argument 'cmake_args' from command line to 'None'
+[0.875s] Level 5:colcon.colcon_core.verb:set package 'aws_robomaker_small_warehouse_world' build argument 'cmake_target' from command line to 'None'
+[0.875s] Level 5:colcon.colcon_core.verb:set package 'aws_robomaker_small_warehouse_world' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.875s] Level 5:colcon.colcon_core.verb:set package 'aws_robomaker_small_warehouse_world' build argument 'cmake_clean_cache' from command line to 'False'
+[0.875s] Level 5:colcon.colcon_core.verb:set package 'aws_robomaker_small_warehouse_world' build argument 'cmake_clean_first' from command line to 'False'
+[0.875s] Level 5:colcon.colcon_core.verb:set package 'aws_robomaker_small_warehouse_world' build argument 'cmake_force_configure' from command line to 'False'
+[0.875s] Level 5:colcon.colcon_core.verb:set package 'aws_robomaker_small_warehouse_world' build argument 'ament_cmake_args' from command line to 'None'
+[0.875s] Level 5:colcon.colcon_core.verb:set package 'aws_robomaker_small_warehouse_world' build argument 'catkin_cmake_args' from command line to 'None'
+[0.875s] Level 5:colcon.colcon_core.verb:set package 'aws_robomaker_small_warehouse_world' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.875s] DEBUG:colcon.colcon_core.verb:Building package 'aws_robomaker_small_warehouse_world' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/akash/colcon_ws/src/build/aws_robomaker_small_warehouse_world', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/akash/colcon_ws/src/install/aws_robomaker_small_warehouse_world', 'merge_install': False, 'path': '/home/akash/colcon_ws/src/aws-robomaker-small-warehouse-world', 'symlink_install': False, 'test_result_base': None}
+[0.884s] Level 5:colcon.colcon_core.verb:set package 'ebot_docking' build argument 'cmake_args' from command line to 'None'
+[0.884s] Level 5:colcon.colcon_core.verb:set package 'ebot_docking' build argument 'cmake_target' from command line to 'None'
+[0.884s] Level 5:colcon.colcon_core.verb:set package 'ebot_docking' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.884s] Level 5:colcon.colcon_core.verb:set package 'ebot_docking' build argument 'cmake_clean_cache' from command line to 'False'
+[0.884s] Level 5:colcon.colcon_core.verb:set package 'ebot_docking' build argument 'cmake_clean_first' from command line to 'False'
+[0.884s] Level 5:colcon.colcon_core.verb:set package 'ebot_docking' build argument 'cmake_force_configure' from command line to 'False'
+[0.885s] Level 5:colcon.colcon_core.verb:set package 'ebot_docking' build argument 'ament_cmake_args' from command line to 'None'
+[0.885s] Level 5:colcon.colcon_core.verb:set package 'ebot_docking' build argument 'catkin_cmake_args' from command line to 'None'
+[0.885s] Level 5:colcon.colcon_core.verb:set package 'ebot_docking' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.885s] DEBUG:colcon.colcon_core.verb:Building package 'ebot_docking' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/akash/colcon_ws/src/build/ebot_docking', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/akash/colcon_ws/src/install/ebot_docking', 'merge_install': False, 'path': '/home/akash/colcon_ws/src/ebot_docking', 'symlink_install': False, 'test_result_base': None}
+[0.894s] Level 5:colcon.colcon_core.verb:set package 'ebot_nav2' build argument 'cmake_args' from command line to 'None'
+[0.894s] Level 5:colcon.colcon_core.verb:set package 'ebot_nav2' build argument 'cmake_target' from command line to 'None'
+[0.894s] Level 5:colcon.colcon_core.verb:set package 'ebot_nav2' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.894s] Level 5:colcon.colcon_core.verb:set package 'ebot_nav2' build argument 'cmake_clean_cache' from command line to 'False'
+[0.894s] Level 5:colcon.colcon_core.verb:set package 'ebot_nav2' build argument 'cmake_clean_first' from command line to 'False'
+[0.894s] Level 5:colcon.colcon_core.verb:set package 'ebot_nav2' build argument 'cmake_force_configure' from command line to 'False'
+[0.894s] Level 5:colcon.colcon_core.verb:set package 'ebot_nav2' build argument 'ament_cmake_args' from command line to 'None'
+[0.894s] Level 5:colcon.colcon_core.verb:set package 'ebot_nav2' build argument 'catkin_cmake_args' from command line to 'None'
+[0.894s] Level 5:colcon.colcon_core.verb:set package 'ebot_nav2' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.894s] DEBUG:colcon.colcon_core.verb:Building package 'ebot_nav2' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/akash/colcon_ws/src/build/ebot_nav2', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/akash/colcon_ws/src/install/ebot_nav2', 'merge_install': False, 'path': '/home/akash/colcon_ws/src/ebot_nav2', 'symlink_install': False, 'test_result_base': None}
+[0.905s] Level 5:colcon.colcon_core.verb:set package 'eyantra_warehouse' build argument 'cmake_args' from command line to 'None'
+[0.905s] Level 5:colcon.colcon_core.verb:set package 'eyantra_warehouse' build argument 'cmake_target' from command line to 'None'
+[0.905s] Level 5:colcon.colcon_core.verb:set package 'eyantra_warehouse' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.905s] Level 5:colcon.colcon_core.verb:set package 'eyantra_warehouse' build argument 'cmake_clean_cache' from command line to 'False'
+[0.905s] Level 5:colcon.colcon_core.verb:set package 'eyantra_warehouse' build argument 'cmake_clean_first' from command line to 'False'
+[0.905s] Level 5:colcon.colcon_core.verb:set package 'eyantra_warehouse' build argument 'cmake_force_configure' from command line to 'False'
+[0.905s] Level 5:colcon.colcon_core.verb:set package 'eyantra_warehouse' build argument 'ament_cmake_args' from command line to 'None'
+[0.905s] Level 5:colcon.colcon_core.verb:set package 'eyantra_warehouse' build argument 'catkin_cmake_args' from command line to 'None'
+[0.905s] Level 5:colcon.colcon_core.verb:set package 'eyantra_warehouse' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.905s] DEBUG:colcon.colcon_core.verb:Building package 'eyantra_warehouse' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/akash/colcon_ws/src/build/eyantra_warehouse', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/akash/colcon_ws/src/install/eyantra_warehouse', 'merge_install': False, 'path': '/home/akash/colcon_ws/src/eyantra_warehouse', 'symlink_install': False, 'test_result_base': None}
+[0.916s] Level 5:colcon.colcon_core.verb:set package 'gazebo_ros2_control' build argument 'cmake_args' from command line to 'None'
+[0.916s] Level 5:colcon.colcon_core.verb:set package 'gazebo_ros2_control' build argument 'cmake_target' from command line to 'None'
+[0.916s] Level 5:colcon.colcon_core.verb:set package 'gazebo_ros2_control' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.916s] Level 5:colcon.colcon_core.verb:set package 'gazebo_ros2_control' build argument 'cmake_clean_cache' from command line to 'False'
+[0.916s] Level 5:colcon.colcon_core.verb:set package 'gazebo_ros2_control' build argument 'cmake_clean_first' from command line to 'False'
+[0.916s] Level 5:colcon.colcon_core.verb:set package 'gazebo_ros2_control' build argument 'cmake_force_configure' from command line to 'False'
+[0.916s] Level 5:colcon.colcon_core.verb:set package 'gazebo_ros2_control' build argument 'ament_cmake_args' from command line to 'None'
+[0.916s] Level 5:colcon.colcon_core.verb:set package 'gazebo_ros2_control' build argument 'catkin_cmake_args' from command line to 'None'
+[0.916s] Level 5:colcon.colcon_core.verb:set package 'gazebo_ros2_control' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.916s] DEBUG:colcon.colcon_core.verb:Building package 'gazebo_ros2_control' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/akash/colcon_ws/src/build/gazebo_ros2_control', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/akash/colcon_ws/src/install/gazebo_ros2_control', 'merge_install': False, 'path': '/home/akash/colcon_ws/src/gazebo_ros2_control', 'symlink_install': False, 'test_result_base': None}
+[0.925s] Level 5:colcon.colcon_core.verb:set package 'linkattacher_msgs' build argument 'cmake_args' from command line to 'None'
+[0.925s] Level 5:colcon.colcon_core.verb:set package 'linkattacher_msgs' build argument 'cmake_target' from command line to 'None'
+[0.925s] Level 5:colcon.colcon_core.verb:set package 'linkattacher_msgs' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.925s] Level 5:colcon.colcon_core.verb:set package 'linkattacher_msgs' build argument 'cmake_clean_cache' from command line to 'False'
+[0.925s] Level 5:colcon.colcon_core.verb:set package 'linkattacher_msgs' build argument 'cmake_clean_first' from command line to 'False'
+[0.925s] Level 5:colcon.colcon_core.verb:set package 'linkattacher_msgs' build argument 'cmake_force_configure' from command line to 'False'
+[0.925s] Level 5:colcon.colcon_core.verb:set package 'linkattacher_msgs' build argument 'ament_cmake_args' from command line to 'None'
+[0.925s] Level 5:colcon.colcon_core.verb:set package 'linkattacher_msgs' build argument 'catkin_cmake_args' from command line to 'None'
+[0.925s] Level 5:colcon.colcon_core.verb:set package 'linkattacher_msgs' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.925s] DEBUG:colcon.colcon_core.verb:Building package 'linkattacher_msgs' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/akash/colcon_ws/src/build/linkattacher_msgs', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/akash/colcon_ws/src/install/linkattacher_msgs', 'merge_install': False, 'path': '/home/akash/colcon_ws/src/linkattacher_msgs', 'symlink_install': False, 'test_result_base': None}
+[0.935s] Level 5:colcon.colcon_core.verb:set package 'pymoveit2' build argument 'cmake_args' from command line to 'None'
+[0.935s] Level 5:colcon.colcon_core.verb:set package 'pymoveit2' build argument 'cmake_target' from command line to 'None'
+[0.935s] Level 5:colcon.colcon_core.verb:set package 'pymoveit2' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.935s] Level 5:colcon.colcon_core.verb:set package 'pymoveit2' build argument 'cmake_clean_cache' from command line to 'False'
+[0.935s] Level 5:colcon.colcon_core.verb:set package 'pymoveit2' build argument 'cmake_clean_first' from command line to 'False'
+[0.935s] Level 5:colcon.colcon_core.verb:set package 'pymoveit2' build argument 'cmake_force_configure' from command line to 'False'
+[0.935s] Level 5:colcon.colcon_core.verb:set package 'pymoveit2' build argument 'ament_cmake_args' from command line to 'None'
+[0.935s] Level 5:colcon.colcon_core.verb:set package 'pymoveit2' build argument 'catkin_cmake_args' from command line to 'None'
+[0.935s] Level 5:colcon.colcon_core.verb:set package 'pymoveit2' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.935s] DEBUG:colcon.colcon_core.verb:Building package 'pymoveit2' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/akash/colcon_ws/src/build/pymoveit2', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/akash/colcon_ws/src/install/pymoveit2', 'merge_install': False, 'path': '/home/akash/colcon_ws/src/pymoveit2', 'symlink_install': False, 'test_result_base': None}
+[0.944s] Level 5:colcon.colcon_core.verb:set package 'realsense_gazebo_plugin' build argument 'cmake_args' from command line to 'None'
+[0.944s] Level 5:colcon.colcon_core.verb:set package 'realsense_gazebo_plugin' build argument 'cmake_target' from command line to 'None'
+[0.944s] Level 5:colcon.colcon_core.verb:set package 'realsense_gazebo_plugin' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.944s] Level 5:colcon.colcon_core.verb:set package 'realsense_gazebo_plugin' build argument 'cmake_clean_cache' from command line to 'False'
+[0.944s] Level 5:colcon.colcon_core.verb:set package 'realsense_gazebo_plugin' build argument 'cmake_clean_first' from command line to 'False'
+[0.944s] Level 5:colcon.colcon_core.verb:set package 'realsense_gazebo_plugin' build argument 'cmake_force_configure' from command line to 'False'
+[0.944s] Level 5:colcon.colcon_core.verb:set package 'realsense_gazebo_plugin' build argument 'ament_cmake_args' from command line to 'None'
+[0.944s] Level 5:colcon.colcon_core.verb:set package 'realsense_gazebo_plugin' build argument 'catkin_cmake_args' from command line to 'None'
+[0.944s] Level 5:colcon.colcon_core.verb:set package 'realsense_gazebo_plugin' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.944s] DEBUG:colcon.colcon_core.verb:Building package 'realsense_gazebo_plugin' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/akash/colcon_ws/src/build/realsense_gazebo_plugin', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/akash/colcon_ws/src/install/realsense_gazebo_plugin', 'merge_install': False, 'path': '/home/akash/colcon_ws/src/realsense_gazebo_plugin', 'symlink_install': False, 'test_result_base': None}
+[0.953s] Level 5:colcon.colcon_core.verb:set package 'ur_description' build argument 'cmake_args' from command line to 'None'
+[0.953s] Level 5:colcon.colcon_core.verb:set package 'ur_description' build argument 'cmake_target' from command line to 'None'
+[0.953s] Level 5:colcon.colcon_core.verb:set package 'ur_description' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.953s] Level 5:colcon.colcon_core.verb:set package 'ur_description' build argument 'cmake_clean_cache' from command line to 'False'
+[0.953s] Level 5:colcon.colcon_core.verb:set package 'ur_description' build argument 'cmake_clean_first' from command line to 'False'
+[0.953s] Level 5:colcon.colcon_core.verb:set package 'ur_description' build argument 'cmake_force_configure' from command line to 'False'
+[0.953s] Level 5:colcon.colcon_core.verb:set package 'ur_description' build argument 'ament_cmake_args' from command line to 'None'
+[0.953s] Level 5:colcon.colcon_core.verb:set package 'ur_description' build argument 'catkin_cmake_args' from command line to 'None'
+[0.953s] Level 5:colcon.colcon_core.verb:set package 'ur_description' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.953s] DEBUG:colcon.colcon_core.verb:Building package 'ur_description' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/akash/colcon_ws/src/build/ur_description', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/akash/colcon_ws/src/install/ur_description', 'merge_install': False, 'path': '/home/akash/colcon_ws/src/ur_description', 'symlink_install': False, 'test_result_base': None}
+[0.963s] Level 5:colcon.colcon_core.verb:set package 'ebot_description' build argument 'cmake_args' from command line to 'None'
+[0.963s] Level 5:colcon.colcon_core.verb:set package 'ebot_description' build argument 'cmake_target' from command line to 'None'
+[0.963s] Level 5:colcon.colcon_core.verb:set package 'ebot_description' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.963s] Level 5:colcon.colcon_core.verb:set package 'ebot_description' build argument 'cmake_clean_cache' from command line to 'False'
+[0.963s] Level 5:colcon.colcon_core.verb:set package 'ebot_description' build argument 'cmake_clean_first' from command line to 'False'
+[0.963s] Level 5:colcon.colcon_core.verb:set package 'ebot_description' build argument 'cmake_force_configure' from command line to 'False'
+[0.963s] Level 5:colcon.colcon_core.verb:set package 'ebot_description' build argument 'ament_cmake_args' from command line to 'None'
+[0.963s] Level 5:colcon.colcon_core.verb:set package 'ebot_description' build argument 'catkin_cmake_args' from command line to 'None'
+[0.963s] Level 5:colcon.colcon_core.verb:set package 'ebot_description' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.963s] DEBUG:colcon.colcon_core.verb:Building package 'ebot_description' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/akash/colcon_ws/src/build/ebot_description', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/akash/colcon_ws/src/install/ebot_description', 'merge_install': False, 'path': '/home/akash/colcon_ws/src/ebot_description', 'symlink_install': False, 'test_result_base': None}
+[0.972s] Level 5:colcon.colcon_core.verb:set package 'ur5_moveit' build argument 'cmake_args' from command line to 'None'
+[0.972s] Level 5:colcon.colcon_core.verb:set package 'ur5_moveit' build argument 'cmake_target' from command line to 'None'
+[0.972s] Level 5:colcon.colcon_core.verb:set package 'ur5_moveit' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.972s] Level 5:colcon.colcon_core.verb:set package 'ur5_moveit' build argument 'cmake_clean_cache' from command line to 'False'
+[0.972s] Level 5:colcon.colcon_core.verb:set package 'ur5_moveit' build argument 'cmake_clean_first' from command line to 'False'
+[0.972s] Level 5:colcon.colcon_core.verb:set package 'ur5_moveit' build argument 'cmake_force_configure' from command line to 'False'
+[0.972s] Level 5:colcon.colcon_core.verb:set package 'ur5_moveit' build argument 'ament_cmake_args' from command line to 'None'
+[0.972s] Level 5:colcon.colcon_core.verb:set package 'ur5_moveit' build argument 'catkin_cmake_args' from command line to 'None'
+[0.972s] Level 5:colcon.colcon_core.verb:set package 'ur5_moveit' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.972s] DEBUG:colcon.colcon_core.verb:Building package 'ur5_moveit' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/akash/colcon_ws/src/build/ur5_moveit', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/akash/colcon_ws/src/install/ur5_moveit', 'merge_install': False, 'path': '/home/akash/colcon_ws/src/ur5_moveit', 'symlink_install': False, 'test_result_base': None}
+[0.981s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[0.991s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[0.991s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/akash/colcon_ws/src/ebot_docking' with build type 'ament_cmake'
+[0.991s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/akash/colcon_ws/src/ebot_docking'
+[1.002s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[1.002s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.002s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.039s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/akash/colcon_ws/src/ur_description' with build type 'ament_cmake'
+[1.039s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/akash/colcon_ws/src/ur_description'
+[1.050s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.050s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.083s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/akash/colcon_ws/src/aws-robomaker-small-warehouse-world' with build type 'ament_cmake'
+[1.084s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/akash/colcon_ws/src/aws-robomaker-small-warehouse-world'
+[1.094s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.094s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.131s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/akash/colcon_ws/src/ebot_nav2' with build type 'ament_cmake'
+[1.131s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/akash/colcon_ws/src/ebot_nav2'
+[1.141s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.141s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.177s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/akash/colcon_ws/src/eyantra_warehouse' with build type 'ament_cmake'
+[1.177s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/akash/colcon_ws/src/eyantra_warehouse'
+[1.188s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.188s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.239s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/akash/colcon_ws/src/gazebo_ros2_control' with build type 'ament_cmake'
+[1.239s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/akash/colcon_ws/src/gazebo_ros2_control'
+[1.251s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.251s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.287s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/akash/colcon_ws/src/linkattacher_msgs' with build type 'ament_cmake'
+[1.287s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/akash/colcon_ws/src/linkattacher_msgs'
+[1.299s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.299s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.333s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/akash/colcon_ws/src/pymoveit2' with build type 'ament_cmake'
+[1.333s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/akash/colcon_ws/src/pymoveit2'
+[1.344s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.344s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.378s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/akash/colcon_ws/src/realsense_gazebo_plugin' with build type 'ament_cmake'
+[1.378s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/akash/colcon_ws/src/realsense_gazebo_plugin'
+[1.389s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.389s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.440s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/akash/colcon_ws/src/build/ebot_docking': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble ftp_proxy=edcguest:edcguest@172.31.102.29:3128" /usr/bin/cmake /home/akash/colcon_ws/src/ebot_docking -DCMAKE_INSTALL_PREFIX=/home/akash/colcon_ws/src/install/ebot_docking
+[1.441s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/akash/colcon_ws/src/build/ur_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble ftp_proxy=edcguest:edcguest@172.31.102.29:3128" /usr/bin/cmake /home/akash/colcon_ws/src/ur_description -DCMAKE_INSTALL_PREFIX=/home/akash/colcon_ws/src/install/ur_description
+[1.444s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/akash/colcon_ws/src/build/aws_robomaker_small_warehouse_world': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble ftp_proxy=edcguest:edcguest@172.31.102.29:3128" /usr/bin/cmake /home/akash/colcon_ws/src/aws-robomaker-small-warehouse-world -DCMAKE_INSTALL_PREFIX=/home/akash/colcon_ws/src/install/aws_robomaker_small_warehouse_world
+[1.448s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/akash/colcon_ws/src/build/ebot_nav2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble ftp_proxy=edcguest:edcguest@172.31.102.29:3128" /usr/bin/cmake /home/akash/colcon_ws/src/ebot_nav2 -DCMAKE_INSTALL_PREFIX=/home/akash/colcon_ws/src/install/ebot_nav2
+[1.451s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/akash/colcon_ws/src/build/eyantra_warehouse': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble ftp_proxy=edcguest:edcguest@172.31.102.29:3128" /usr/bin/cmake /home/akash/colcon_ws/src/eyantra_warehouse -DCMAKE_INSTALL_PREFIX=/home/akash/colcon_ws/src/install/eyantra_warehouse
+[1.455s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/akash/colcon_ws/src/build/gazebo_ros2_control': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble ftp_proxy=edcguest:edcguest@172.31.102.29:3128" /usr/bin/cmake /home/akash/colcon_ws/src/gazebo_ros2_control -DCMAKE_INSTALL_PREFIX=/home/akash/colcon_ws/src/install/gazebo_ros2_control
+[1.457s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/akash/colcon_ws/src/build/linkattacher_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble ftp_proxy=edcguest:edcguest@172.31.102.29:3128" /usr/bin/cmake /home/akash/colcon_ws/src/linkattacher_msgs -DCMAKE_INSTALL_PREFIX=/home/akash/colcon_ws/src/install/linkattacher_msgs
+[1.460s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/akash/colcon_ws/src/build/pymoveit2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble ftp_proxy=edcguest:edcguest@172.31.102.29:3128" /usr/bin/cmake /home/akash/colcon_ws/src/pymoveit2 -DCMAKE_INSTALL_PREFIX=/home/akash/colcon_ws/src/install/pymoveit2
+[1.466s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/akash/colcon_ws/src/build/realsense_gazebo_plugin': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble ftp_proxy=edcguest:edcguest@172.31.102.29:3128" /usr/bin/cmake /home/akash/colcon_ws/src/realsense_gazebo_plugin -DCMAKE_INSTALL_PREFIX=/home/akash/colcon_ws/src/install/realsense_gazebo_plugin
+[2.075s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete was interrupted
+[2.075s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete again
+[2.078s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/akash/colcon_ws/src/build/ebot_docking' returned '-2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble ftp_proxy=edcguest:edcguest@172.31.102.29:3128" /usr/bin/cmake /home/akash/colcon_ws/src/ebot_docking -DCMAKE_INSTALL_PREFIX=/home/akash/colcon_ws/src/install/ebot_docking
+[2.100s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished
+[2.100s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[2.100s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[2.100s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[2.121s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[2.121s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[2.121s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[2.133s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[2.149s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/akash/colcon_ws/src/install/local_setup.ps1'
+[2.149s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/akash/colcon_ws/src/install/_local_setup_util_ps1.py'
+[2.151s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/akash/colcon_ws/src/install/setup.ps1'
+[2.169s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/akash/colcon_ws/src/install/local_setup.sh'
+[2.169s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/akash/colcon_ws/src/install/_local_setup_util_sh.py'
+[2.170s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/akash/colcon_ws/src/install/setup.sh'
+[2.191s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/akash/colcon_ws/src/install/local_setup.bash'
+[2.191s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/akash/colcon_ws/src/install/setup.bash'
+[2.208s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/akash/colcon_ws/src/install/local_setup.zsh'
+[2.209s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/akash/colcon_ws/src/install/setup.zsh'

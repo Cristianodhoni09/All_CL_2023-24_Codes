@@ -1,0 +1,1 @@
+Invoking command in '/home/akash/colcon_ws/src/build/realsense_gazebo_plugin': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble ftp_proxy=edcguest:edcguest@172.31.102.29:3128" /usr/bin/cmake /home/akash/colcon_ws/src/realsense_gazebo_plugin -DCMAKE_INSTALL_PREFIX=/home/akash/colcon_ws/src/install/realsense_gazebo_plugin

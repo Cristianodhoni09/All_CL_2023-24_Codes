@@ -1,0 +1,1 @@
+Invoking command in '/home/akash/colcon_ws/src/build/gazebo_ros2_control': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble ftp_proxy=edcguest:edcguest@172.31.102.29:3128" /usr/bin/cmake /home/akash/colcon_ws/src/gazebo_ros2_control -DCMAKE_INSTALL_PREFIX=/home/akash/colcon_ws/src/install/gazebo_ros2_control

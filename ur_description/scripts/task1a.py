@@ -54,6 +54,7 @@ from sensor_msgs.msg import CompressedImage, Image
 ##################### FUNCTION DEFINITIONS #######################
 
 
+
 def rotation_matrix_to_euler_angles(R):
     sy = np.sqrt(R[0, 0] * R[0, 0] + R[1, 0] * R[1, 0])
 
@@ -165,6 +166,7 @@ def detect_aruco(image):
     # You may get this from /camer_info topic when camera is spawned in gazebo.
     # Make sure you verify this matrix once if there are calibration issues.
     cam_mat = np.array([[931.1829833984375, 0.0, 640.0], [0.0, 931.1829833984375, 360.0], [0.0, 0.0, 1.0]])
+    #cam_mat = np.array([[915.3003540039062, 0.0, 642.724365234375], [0.0, 914.0320434570312, 361.9780578613281], [0.0, 0.0, 1.0]])
 
     # The distortion matrix is currently set to 0. 
     # We will be using it during Stage 2 hardware as Intel Realsense Camera provides these camera info.
@@ -179,11 +181,50 @@ def detect_aruco(image):
     angle_aruco_list = []
     width_aruco_list = []
     ids = []
+    image_with_markers=None
+    # rvec=[]
+    # tvec=[]
+    rvec=None
+    tvec=None
+    flags=0
  
     ############ ADD YOUR CODE HERE ############
-
+    #parameters = cv2.aruco.DetectorParameters_create()
     dictionary = cv2.aruco.getPredefinedDictionary(cv2.aruco.DICT_4X4_50)
-    corners, marker_ids, rejected = cv2.aruco.detectMarkers(image, dictionary)
+    #image_rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+    gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
+    #kernel_size = (5, 5)  # Adjust the kernel size as needed
+    #blurred_image = cv2.GaussianBlur(gray_image, kernel_size, 0)
+    #blurred_image=gray_image
+    #blurred_image = cv2.blur(gray_image, kernel_size)
+    #blurred_image = cv2.medianBlur(gray_image, 3)
+    #cv2.imshow('blurimage', blurred_image)
+    #cv2.waitKey(0)
+ 
+
+    #gray_image = cv2.cvtColor(blurred_image, cv2.COLOR_BGR2GRAY)
+    #gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    #ret,thresh1 = cv2.threshold(blurred_image,70,255,cv2.THRESH_BINARY)
+    #thresh1 = cv2.adaptiveThreshold(blurred_image,255,cv2.ADAPTIVE_THRESH_MEAN_C,\
+    #        cv2.THRESH_BINARY,72,30)
+    #thresh1 = cv2.adaptiveThreshold(blurred_image,255,cv2.ADAPTIVE_THRESH_GAUSSIAN_C,\
+    #        cv2.THRESH_BINARY,41, -5)
+    #ret2,thresh1 = cv2.threshold(blurred_image,0,255,cv2.THRESH_BINARY+cv2.THRESH_OTSU)
+    #cv2.imshow('grayimage', thresh1)
+    #cv2.waitKey(0)
+
+    '''parameters = cv2.aruco.DetectorParameters_create()
+    parameters.markerBorderBits = 1
+    parameters.minMarkerPerimeterRate = 0.02
+    parameters.maxMarkerPerimeterRate = 4.0
+    parameters.polygonalApproxAccuracyRate = 0.05'''
+
+
+    
+    corners, marker_ids, rejected = cv2.aruco.detectMarkers(gray_image,dictionary,)
+    #corners, marker_ids, rejected = cv2.aruco.detectMarkers(thresh1,dictionary,parameters=parameters)
+    #print(rejected)
    
     areas_and_widths = []
     # corners_new = []
@@ -236,28 +277,49 @@ def detect_aruco(image):
 
                     '''pose estimation'''
                     rvec, tvec, _ = cv2.aruco.estimatePoseSingleMarkers(valid_markers_corners, 10, cam_mat, dist_mat)
+                    
                     cv2.drawFrameAxes(image_with_markers, cam_mat, dist_mat, rvec[v], tvec[v], 10)
+
+                    # if rvec is not None and tvec is not None:
+                    #     for v in range(len(valid_markers_corners)):
+                    #         ids.append(marker_ids[v][0])
+
+                    #     for p in range(len(rvec)):
+                    #         angle_aruco_list.append(rvec[p][0][2])
+
+                    #     distance_from_rgb_list = tvec
+
+                    # else:
+                    #     flags=1
+                    #     return
 
 
                 '''distance from rgb'''
                 distance_from_rgb_list = tvec
                 
         # print('Valid Marker Length: ', len(valid_markers))
-        for v in range(len(valid_markers_corners)):
-            ids.append(marker_ids[v][0])
-            # print(marker_ids[v][0])
+        if rvec is not None and tvec is not None:
+            # rvec=None
+            for v in range(len(valid_markers_corners)):
+                ids.append(marker_ids[v][0])
+                # print(marker_ids[v][0])
 
-        # rvec
-        for p in range(len(rvec)):
-            angle_aruco_list.append(rvec[p][0][2])
+            # rvec
+            for p in range(len(rvec)):
+                angle_aruco_list.append(rvec[p][0][2])
+        else:
+            flags=1
+            return
+        
+        
         
 
     # print('all rvecs :', rvec)  #rvec print
     # print("all tvecs : ", tvec)  #tvec print
     # print("all aruco centres : ", center_aruco_list) #center list print
 
-    # cv2.imshow('Markers', image_with_markers)
-    # cv2.waitKey(0)
+    #cv2.imshow('Markers', image_with_markers)
+    #cv2.waitKey(0)
   
 
     # INSTRUCTIONS & HELP : 
@@ -284,7 +346,7 @@ def detect_aruco(image):
 
     ############################################
 
-    return center_aruco_list, distance_from_rgb_list, angle_aruco_list, width_aruco_list, ids, image_with_markers
+    return center_aruco_list, distance_from_rgb_list, angle_aruco_list, width_aruco_list, ids, image_with_markers,flags
 
 
 ##################### CLASS DEFINITION #######################
@@ -307,7 +369,9 @@ class aruco_tf(Node):
         super().__init__('aruco_tf_publisher')                                          # registering node
 
         ############ Topic SUBSCRIPTIONS ############
-
+        self.images_received = False
+        self.Images_received = False
+      
         self.color_cam_sub = self.create_subscription(Image, '/camera/color/image_raw', self.colorimagecb, 10)
         self.depth_cam_sub = self.create_subscription(Image, '/camera/aligned_depth_to_color/image_raw', self.depthimagecb, 10)
 
@@ -318,8 +382,10 @@ class aruco_tf(Node):
         self.tf_buffer = tf2_ros.buffer.Buffer()                                        # buffer time used for listening transforms
         self.listener = tf2_ros.TransformListener(self.tf_buffer, self)
         self.br = tf2_ros.TransformBroadcaster(self)                                    # object as transform broadcaster to send transform wrt some frame_id
-        self.timer = self.create_timer(image_processing_rate, self.process_image)       # creating a timer based function which gets called on every 0.2 seconds (as defined by 'image_processing_rate' variable)
+       
         
+        self.timer = self.create_timer(image_processing_rate, self.process_image)       # creating a timer based function which gets called on every 0.2 seconds (as defined by 'image_processing_rate' variable)
+            
         self.cv_image = None                                                            # colour raw image variable (from colorimagecb())
         self.depth_image = None                                                         # depth image variable (from depthimagecb())
 
@@ -336,7 +402,9 @@ class aruco_tf(Node):
         '''
 
         try:
+            
             self.depth_image = self.bridge.imgmsg_to_cv2(data, desired_encoding='passthrough')
+            self.images_received = True
             # cv2.imshow('Depth Image', self.depth_image)
             # cv2.waitKey(1)
 
@@ -369,9 +437,12 @@ class aruco_tf(Node):
         '''
 
         try:
+            
             self.cv_image = self.bridge.imgmsg_to_cv2(data, desired_encoding='bgr8')
             # cv2.imshow('Color Image', self.cv_image)
+            self.Images_received = True
             # cv2.waitKey(1)
+
 
         except CvBridgeError as er:
             self.get_logger().error(f'Error: {er}')
@@ -391,7 +462,7 @@ class aruco_tf(Node):
         ############################################
 
         
-
+   
 
     def process_image(self):
         '''
@@ -407,6 +478,14 @@ class aruco_tf(Node):
         # Make sure you verify these variable values once. As it may affect your result.
         # You can find more on these variables here -> http://docs.ros.org/en/melodic/api/sensor_msgs/html/msg/CameraInfo.html
         
+
+        #if not self.images_received and not self.Images_received:
+        #    self.get_logger().info('Waiting for images...')
+        #    return
+        if self.depth_image is None or self.cv_image is None:
+            print('waiting')
+            return
+        
         sizeCamX = 1280
         sizeCamY = 720
         centerCamX = 640 
@@ -417,7 +496,25 @@ class aruco_tf(Node):
 
         ############ ADD YOUR CODE HERE ############
 
-        center_aruco_list, distance_from_rgb_list, angle_aruco_list, width_aruco_list, ids, img = detect_aruco(self.cv_image)
+
+        result = detect_aruco(self.cv_image)
+        if result is not None:
+            center_aruco_list, distance_from_rgb_list, angle_aruco_list, width_aruco_list, ids, img, flags = result
+        else:
+            # Handle the case where Aruco markers are not detected
+            # For example, you can print a message and return from the function.
+            print("Aruco markers not detected in the image.")
+            return
+
+        # center_aruco_list, distance_from_rgb_list, angle_aruco_list, width_aruco_list, ids, img,flags = detect_aruco(self.cv_image)
+        if center_aruco_list == [] or distance_from_rgb_list == [] or angle_aruco_list == [] or width_aruco_list == [] or ids == [] or img is None or flags==1:
+            return
+    
+
+        
+         
+        #center_aruco_list, distance_from_rgb_list, angle_aruco_list, width_aruco_list, ids, img = detect_aruco(image)
+
 
         # print(f'\nHELLLO WORLDLDDLDLD!!!!!!!')
         # print(f'\nCenter Aruco List: {center_aruco_list}')
@@ -466,7 +563,7 @@ class aruco_tf(Node):
 
             transform.header.stamp = self.get_clock().now().to_msg()
             transform.header.frame_id = 'camera_link'
-            transform.child_frame_id = 'cam_' + str(marker_id)
+            transform.child_frame_id = '2935_cam_' + str(marker_id)
 
             transform.transform.translation.x = x
             transform.transform.translation.y = y
@@ -484,14 +581,14 @@ class aruco_tf(Node):
             try:
                 # Lookup the transform from base_link to obj_frame
                 target_base = 'base_link'
-                source_base = 'cam_' + str(marker_id)
+                source_base = '2935_cam_' + str(marker_id)
                 t2 = self.tf_buffer.lookup_transform(target_base, source_base, rclpy.time.Time())
 
                 tf_msg = geometry_msgs.msg.TransformStamped()
 
                 tf_msg.header.stamp = self.get_clock().now().to_msg()
                 tf_msg.header.frame_id = 'base_link'
-                tf_msg.child_frame_id = 'obj_' + str(marker_id)
+                tf_msg.child_frame_id = '2935_base_' + str(marker_id)
                 
                 tf_msg.transform.translation.x = t2.transform.translation.x
                 tf_msg.transform.translation.y = t2.transform.translation.y

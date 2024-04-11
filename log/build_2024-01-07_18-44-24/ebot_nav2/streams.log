@@ -1,0 +1,14 @@
+[0.316s] Invoking command in '/home/akash/colcon_ws/src/build/ebot_nav2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble ftp_proxy=edcguest:edcguest@172.31.102.29:3128" /usr/bin/cmake /home/akash/colcon_ws/src/ebot_nav2 -DCMAKE_INSTALL_PREFIX=/home/akash/colcon_ws/src/install/ebot_nav2
+[0.399s] -- The C compiler identification is GNU 11.4.0
+[0.480s] -- The CXX compiler identification is GNU 11.4.0
+[0.491s] -- Detecting C compiler ABI info
+[0.586s] -- Detecting C compiler ABI info - done
+[0.600s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.600s] -- Detecting C compile features
+[0.601s] -- Detecting C compile features - done
+[0.606s] -- Detecting CXX compiler ABI info
+[0.719s] -- Detecting CXX compiler ABI info - done
+[0.737s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.738s] -- Detecting CXX compile features
+[0.739s] -- Detecting CXX compile features - done
+[0.744s] -- Found ament_cmake: 1.3.5 (/opt/ros/humble/share/ament_cmake/cmake)

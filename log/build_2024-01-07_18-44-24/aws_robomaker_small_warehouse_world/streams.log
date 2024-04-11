@@ -1,0 +1,14 @@
+[0.360s] Invoking command in '/home/akash/colcon_ws/src/build/aws_robomaker_small_warehouse_world': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble ftp_proxy=edcguest:edcguest@172.31.102.29:3128" /usr/bin/cmake /home/akash/colcon_ws/src/aws-robomaker-small-warehouse-world -DCMAKE_INSTALL_PREFIX=/home/akash/colcon_ws/src/install/aws_robomaker_small_warehouse_world
+[0.441s] -- The C compiler identification is GNU 11.4.0
+[0.510s] -- The CXX compiler identification is GNU 11.4.0
+[0.523s] -- Detecting C compiler ABI info
+[0.624s] -- Detecting C compiler ABI info - done
+[0.639s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.639s] -- Detecting C compile features
+[0.639s] -- Detecting C compile features - done
+[0.644s] -- Detecting CXX compiler ABI info
+[0.760s] -- Detecting CXX compiler ABI info - done
+[0.780s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.780s] -- Detecting CXX compile features
+[0.780s] -- Detecting CXX compile features - done
+[0.783s] -- Found ament_cmake: 1.3.5 (/opt/ros/humble/share/ament_cmake/cmake)

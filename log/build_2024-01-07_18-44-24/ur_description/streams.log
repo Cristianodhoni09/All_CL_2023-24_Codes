@@ -1,0 +1,14 @@
+[0.402s] Invoking command in '/home/akash/colcon_ws/src/build/ur_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble ftp_proxy=edcguest:edcguest@172.31.102.29:3128" /usr/bin/cmake /home/akash/colcon_ws/src/ur_description -DCMAKE_INSTALL_PREFIX=/home/akash/colcon_ws/src/install/ur_description
+[0.484s] -- The C compiler identification is GNU 11.4.0
+[0.565s] -- The CXX compiler identification is GNU 11.4.0
+[0.573s] -- Detecting C compiler ABI info
+[0.669s] -- Detecting C compiler ABI info - done
+[0.681s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.681s] -- Detecting C compile features
+[0.683s] -- Detecting C compile features - done
+[0.688s] -- Detecting CXX compiler ABI info
+[0.809s] -- Detecting CXX compiler ABI info - done
+[0.825s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.825s] -- Detecting CXX compile features
+[0.825s] -- Detecting CXX compile features - done
+[0.828s] -- Found ament_cmake: 1.3.5 (/opt/ros/humble/share/ament_cmake/cmake)

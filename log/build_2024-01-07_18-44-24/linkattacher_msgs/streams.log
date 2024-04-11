@@ -1,0 +1,14 @@
+[0.169s] Invoking command in '/home/akash/colcon_ws/src/build/linkattacher_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble ftp_proxy=edcguest:edcguest@172.31.102.29:3128" /usr/bin/cmake /home/akash/colcon_ws/src/linkattacher_msgs -DCMAKE_INSTALL_PREFIX=/home/akash/colcon_ws/src/install/linkattacher_msgs
+[0.245s] -- The C compiler identification is GNU 11.4.0
+[0.329s] -- The CXX compiler identification is GNU 11.4.0
+[0.339s] -- Detecting C compiler ABI info
+[0.426s] -- Detecting C compiler ABI info - done
+[0.436s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.436s] -- Detecting C compile features
+[0.437s] -- Detecting C compile features - done
+[0.442s] -- Detecting CXX compiler ABI info
+[0.542s] -- Detecting CXX compiler ABI info - done
+[0.558s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.558s] -- Detecting CXX compile features
+[0.560s] -- Detecting CXX compile features - done
+[0.576s] -- Found ament_cmake: 1.3.5 (/opt/ros/humble/share/ament_cmake/cmake)
